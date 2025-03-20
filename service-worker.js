@@ -28,7 +28,7 @@ self.addEventListener("activate", event => {
     );
 });
 
-// Fetch event - serve from cache first, then fetch from network
+// Fetch event - serve from cache first, then network
 self.addEventListener("fetch", event => {
     event.respondWith(
         caches.match(event.request).then(response => {
@@ -38,6 +38,6 @@ self.addEventListener("fetch", event => {
                     return fetchResponse;
                 });
             });
-        }).catch(() => caches.match("/index.html")) // Fallback to index.html if offline
+        }).catch(() => caches.match("/index.html")) // Load index.html if offline
     );
 });
