@@ -38,6 +38,6 @@ self.addEventListener("fetch", event => {
                     return fetchResponse;
                 });
             });
-        }).catch(() => caches.match("/index.html")) // Load index.html if offline
+        }).catch(() => caches.match("./index.html")) // Load index.html if offline
     );
 });
